@@ -164,6 +164,7 @@ class Ps_Sharebuttons extends Module implements WidgetInterface
         $social_share_links = [];
         $sharing_url = addcslashes($this->context->link->getProductLink($product), "'");
         $sharing_name = addcslashes($product->name, "'");
+        $sharing_desc = addcslashes($product->description, "'");
 
         $image_cover_id = $product->getCover($product->id);
         if (is_array($image_cover_id) && isset($image_cover_id['id_image'])) {
@@ -178,7 +179,7 @@ class Ps_Sharebuttons extends Module implements WidgetInterface
             $social_share_links['facebook'] = array(
                 'label' => $this->trans('Share', array(), 'Modules.Sharebuttons.Shop'),
                 'class' => 'facebook',
-                'url' => 'http://www.facebook.com/sharer.php?u='.$sharing_url,
+                'url' => 'http://www.facebook.com/sharer.php?u='.$sharing_url.'&picture='.$sharing_img.'&title='.$sharing_name.'&description='.$sharing_desc,
             );
         }
 
